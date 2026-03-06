@@ -56,6 +56,7 @@
 - **算力分层** ：
     - **本地执行层** ：处理琐碎、高频、隐私敏感的任务（如发货、库存、数据分析），成本为零。
     - **高阶智力层** ：处理商业决策、复杂代码、高端创意，按需调用云端强模型。
+- **本地模型红线** ：Mac Mini 24G 下，本地 14B 模型的 `num_ctx` 必须锁定在 `4096`（最高 `8192`），仅承担短逻辑调度；超长文本分析统一上云。
 - **动态节流阀** ：
     - **动态 Manifest** ：根据任务类型，仅加载最小限度的 Tool 定义。
     - **语义摘要** ：严禁全量上下文拷贝，仅传递任务关键摘要。
@@ -69,7 +70,7 @@
 
 - **飞书** ↔ **主 OpenClaw（发财）+ 执远**（宿主机）↔ **子 OpenClaw x 4**（聚宝/班工/美含/如一，Docker）↔ Ollama/云端
 - **工单与状态**由 PostgreSQL/Redis 维护
-- **长期记忆** ：可选 [memory-lancedb-pro](https://github.com/win4r/memory-lancedb-pro)（LanceDB + 混合检索 + 多 Scope 隔离）
+- **长期记忆** ：统一采用 [memory-lancedb-pro](https://github.com/win4r/memory-lancedb-pro)（嵌入式 LanceDB + 混合检索 + 多 Scope 隔离），直接运行在 OpenClaw 进程内并落盘至 `~/.openclaw/memory/`，不再部署独立向量库容器
 - **个体进化** ：可选 [openclaw-plugin-stability](https://github.com/CoderofTheWest/openclaw-plugin-stability)（防漂移/循环）+ [capability-evolver](https://playbooks.com/skills/openclaw/skills/capability-evolver)（能力闭环）
 - **团队协作进化** ：复盘产出协作改进项 → 写入 global 记忆与路由/工单配置，形成双层进化
 
