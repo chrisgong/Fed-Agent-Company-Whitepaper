@@ -1,0 +1,11 @@
+# GitBook 构建输出
+_book/
+
+# 依赖（若用 npm 安装 gitbook-cli）
+node_modules/
+
+# 系统与编辑器
+.DS_Store
+.idea/
+*.swp
+*.swo

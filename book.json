@@ -1,0 +1,13 @@
+{
+  "title": "Fed-Agent-Company 架构白皮书",
+  "author": "Fed-Agent-Company",
+  "language": "zh-hans",
+  "plugins": [
+    "search",
+    "copy-code-button"
+  ],
+  "structure": {
+    "readme": "README.md",
+    "summary": "SUMMARY.md"
+  }
+}
