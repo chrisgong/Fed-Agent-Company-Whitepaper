@@ -3,8 +3,7 @@
   "author": "Fed-Agent-Company",
   "language": "zh-hans",
   "plugins": [
-    "search",
-    "copy-code-button"
+    "search"
   ],
   "structure": {
     "readme": "README.md",
